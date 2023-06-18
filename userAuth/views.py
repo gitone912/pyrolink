@@ -8,19 +8,23 @@ from .models import MyUser
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
+from .serializers import UserSerializer , UserLoginSerializer
 
 class UserRegistration(APIView):
     def post(self, request,format=None):
-        email = request.data.get("email")
-        name = request.data.get("name")
-        terms = request.data.get("terms")
-        password = request.data.get("password")
-        confirmPassword = request.data.get("confirmPassword")
-        if password != confirmPassword:
-            return Response({"error": "Password mismatch"}, status=status.HTTP_400_BAD_REQUEST)
-        if MyUser.objects.filter(email=email).exists():
-            return Response({"error": "Email already exists"}, status=status.HTTP_400_BAD_REQUEST)
-        user = MyUser.objects.create_user(email=email, name=name,terms=terms, password=password,confirmPassword=confirmPassword)
-        user.save()
-        return Response({"success": "User created successfully"}, status=status.HTTP_201_CREATED)
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            user = serializer.save()
+            return Response({"message":"registration successfull"},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+
+class UserLogin(APIView):
+    def post(self, request,format=None):
+        serializer = UserLoginSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            user = serializer.validated_data
+            login(request,user)
+            return Response({"message":"login successfull"},status=status.HTTP_200_OK)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
