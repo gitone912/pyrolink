@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import MyUser
-from django.contrib.auth import authenticate
+
 
 class UserSerializer(serializers.ModelSerializer):
     confirmPassword = serializers.CharField(style={"input_type": "password"}, write_only=True, required=True)
@@ -22,11 +22,3 @@ class UserLoginSerializer(serializers.ModelSerializer):
         model = MyUser
         fields = ["email", "password"]
         extra_kwargs = {"password": {"write_only": True, "required": True}}
-    
-    def validate(self, data):
-        email = data.get("email", None)
-        password = data.get("password", None)
-        user = authenticate(email=email, password=password)
-        if user is None:
-            raise serializers.ValidationError({"error": "Invalid email or password"})
-        return {"email": user.email, "name": user.name, "token": user.token}

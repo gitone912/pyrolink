@@ -9,8 +9,18 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from .serializers import UserSerializer , UserLoginSerializer
+from .renderer import UserRenderer
+from rest_framework_simplejwt.tokens import RefreshToken
 
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }
 class UserRegistration(APIView):
+    renderer_classes = [UserRenderer]
     def post(self, request,format=None):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -20,11 +30,16 @@ class UserRegistration(APIView):
     
 
 class UserLogin(APIView):
+    renderer_classes = [UserRenderer]
     def post(self, request,format=None):
         serializer = UserLoginSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            user = serializer.validated_data
-            login(request,user)
-            return Response({"message":"login successfull"},status=status.HTTP_200_OK)
+            email = serializer.data.get("email")
+            password = serializer.data.get("password")
+            user = authenticate(email=email, password=password)
+            if user:
+                return Response({"message":"login successfull"},status=status.HTTP_200_OK)
+            else:
+                return Response({"errors":"invalid credentials"},status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
