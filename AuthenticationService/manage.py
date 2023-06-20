@@ -5,7 +5,7 @@ import sys
 import dotenv
 
 def main():
-    dotenv.read_dotenv()
+    dotenv.read_dotenv("../.env")
     """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pyrolink.settings")
     try:
