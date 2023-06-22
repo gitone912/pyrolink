@@ -14,7 +14,7 @@ const Registration = () => {
       name: data.get('name'),
       email: data.get('email'),
       password: data.get('password'),
-      confirmPpassword: data.get('confirmPassword'),
+      confirmPassword: data.get('confirmPassword'),
       terms: data.get('terms'),
     }
     const res = await registerUser(actualData)
@@ -36,18 +36,19 @@ const Registration = () => {
     {server_error.email ? console.log(server_error.email[0]) : ""}
     {server_error.password ? console.log(server_error.password[0]) : ""}
     {server_error.password2 ? console.log(server_error.password2[0]) : ""}
-    {server_error.tc ? console.log(server_error.tc[0]) : ""} */}
+    {server_error.tc ? console.log(server_error.tc[0]) : ""} */
+    console.log(server_error)}
     <Box component='form' noValidate sx={{ mt: 1 }} id='registration-form' onSubmit={handleSubmit}>
       <TextField margin='normal' required fullWidth id='name' name='name' label='Name' />
       {server_error.name ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.name[0]}</Typography> : ""}
       <TextField margin='normal' required fullWidth id='email' name='email' label='Email Address' />
       {server_error.email ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.email[0]}</Typography> : ""}
       <TextField margin='normal' required fullWidth id='password' name='password' label='Password' type='password' />
-      {server_error.password ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password[0]}</Typography> : ""}
+      {server_error.password ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password}</Typography> : ""}
       <TextField margin='normal' required fullWidth id='confirmPassword' name='confirmPassword' label='Confirm Password' type='password' />
-      {server_error.password2 ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password2[0]}</Typography> : ""}
+      {server_error.confirmPassword ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.confirmPassword[0]}</Typography> : ""}
       <FormControlLabel control={<Checkbox value={true} color="primary" name="terms" id="terms" />} label="I agree to term and condition." />
-      {server_error.tc ? <span style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.tc[0]}</span> : ""}
+      {server_error.terms ? <span style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.terms[0]}</span> : ""}
       <Box textAlign='center'>
         <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }}>Join</Button>
       </Box>
