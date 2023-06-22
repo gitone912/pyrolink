@@ -2,7 +2,7 @@ import { TextField, FormControlLabel, Checkbox, Button, Box, Alert, Typography  
 import { useState } from 'react';
 import { useNavigate , NavLink} from 'react-router-dom';
 import { useRegisterUserMutation } from '../../services/userAuthApi';
-
+import { storeToken } from '../../services/LocalStorageService';
 const Registration = () => {
   const [server_error, setServerError] = useState({})
   const navigate = useNavigate();
@@ -24,10 +24,10 @@ const Registration = () => {
       setServerError(res.error.data.errors)
     }
     if (res.data) {
-      console.log(typeof (res.data))
-      console.log(res.data)
+      // console.log(typeof (res.data))
+      // console.log(res.data)
       storeToken(res.data.token)
-      navigate('/dashboard')
+      navigate('/login')
     }
   }
   return <>

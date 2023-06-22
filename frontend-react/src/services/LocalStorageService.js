@@ -1,4 +1,4 @@
-const storeToken = (token) => {
+const storeToken = (value) => {
     if(value){
         console.log("Token stored");
         const {accessToken, refreshToken} = value;
@@ -7,9 +7,14 @@ const storeToken = (token) => {
 
     }
 }
-const getAccessToken = () => {
-    return localStorage.getItem("accessToken");
+const getToken = () => {
+    let accessToken = localStorage.getItem("accessToken");
+    let refreshToken = localStorage.getItem("refreshToken");
+    return {accessToken, refreshToken};
 }
-const getRefreshToken = () => {
-    return localStorage.getItem("refreshToken");
+
+const removeToken = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
 }
+export {storeToken, getToken, removeToken};
