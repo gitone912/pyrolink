@@ -1,6 +1,6 @@
-import { TextField, FormControlLabel, Checkbox, Button, Box, Alert, Typography } from '@mui/material';
+import { TextField, FormControlLabel, Checkbox, Button, Box, Alert, Typography  } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , NavLink} from 'react-router-dom';
 import { useRegisterUserMutation } from '../../services/userAuthApi';
 
 const Registration = () => {
@@ -54,6 +54,7 @@ const Registration = () => {
       </Box>
       {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : ''}
     </Box>
+    <NavLink to='/login' >login</NavLink>
   </>;
 };
 

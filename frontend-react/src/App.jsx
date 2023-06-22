@@ -5,6 +5,7 @@ import './App.css'
 import Registration from './pages/auth/Registration.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './pages/Layout';
+import UserLogin from './pages/auth/UserLogin'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Registration />} />
-
+        <Route path="/login" element={<Registration />} />
         <Route path="*" element={<h1>Error 404 Page not found !!</h1>} />
       </Route>
       </Routes>
