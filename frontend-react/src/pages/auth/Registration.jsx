@@ -14,8 +14,8 @@ const Registration = () => {
       name: data.get('name'),
       email: data.get('email'),
       password: data.get('password'),
-      password2: data.get('password2'),
-      tc: data.get('tc'),
+      confirmPpassword: data.get('confirmPassword'),
+      terms: data.get('terms'),
     }
     const res = await registerUser(actualData)
     if (res.error) {
@@ -44,9 +44,9 @@ const Registration = () => {
       {server_error.email ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.email[0]}</Typography> : ""}
       <TextField margin='normal' required fullWidth id='password' name='password' label='Password' type='password' />
       {server_error.password ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password[0]}</Typography> : ""}
-      <TextField margin='normal' required fullWidth id='password2' name='password2' label='Confirm Password' type='password' />
+      <TextField margin='normal' required fullWidth id='confirmPassword' name='confirmPassword' label='Confirm Password' type='password' />
       {server_error.password2 ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.password2[0]}</Typography> : ""}
-      <FormControlLabel control={<Checkbox value={true} color="primary" name="tc" id="tc" />} label="I agree to term and condition." />
+      <FormControlLabel control={<Checkbox value={true} color="primary" name="terms" id="terms" />} label="I agree to term and condition." />
       {server_error.tc ? <span style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.tc[0]}</span> : ""}
       <Box textAlign='center'>
         <Button type='submit' variant='contained' sx={{ mt: 3, mb: 2, px: 5 }}>Join</Button>
