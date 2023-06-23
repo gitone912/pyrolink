@@ -29,7 +29,7 @@ const Registration = () => {
       // console.log(res.data.data.token)
       // console.log(res.data.token.access);
       storeToken(res.data.data.token)
-      navigate('/login')
+      navigate('/dashboard')
     }
   }
   return <>
@@ -42,7 +42,7 @@ const Registration = () => {
     console.log(server_error)}
     <Box component='form' noValidate sx={{ mt: 1 }} id='registration-form' onSubmit={handleSubmit}>
       <TextField margin='normal' required fullWidth id='name' name='name' label='Name' />
-      {server_error.name ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.name[0]}</Typography> : ""}
+      {server_error.name ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.name[0]}</Typography> : ""} 
       <TextField margin='normal' required fullWidth id='email' name='email' label='Email Address' />
       {server_error.email ? <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>{server_error.email[0]}</Typography> : ""}
       <TextField margin='normal' required fullWidth id='password' name='password' label='Password' type='password' />
