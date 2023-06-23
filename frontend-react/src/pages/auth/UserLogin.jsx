@@ -27,7 +27,7 @@ const UserLogin = () => {
     if (res.data) {
       // console.log(typeof (res.data))
       // console.log(res.data)
-      storeToken(res.data.token)
+      storeToken(res.data.data.token)
       let { access_token } = getToken()
       dispatch(setUserToken({ access_token: access_token }))
       navigate('/dashboard')

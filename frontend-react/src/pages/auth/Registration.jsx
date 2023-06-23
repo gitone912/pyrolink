@@ -26,7 +26,9 @@ const Registration = () => {
     if (res.data) {
       // console.log(typeof (res.data))
       // console.log(res.data)
-      storeToken(res.data.token)
+      // console.log(res.data.data.token)
+      // console.log(res.data.token.access);
+      storeToken(res.data.data.token)
       navigate('/login')
     }
   }
