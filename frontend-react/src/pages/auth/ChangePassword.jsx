@@ -20,7 +20,7 @@ const ChangePassword = () => {
     }
     const res = await changeUserPassword({ actualData, access_token })
     if (res.error) {
-      // console.log(res)
+      console.log(res)
       setServerMsg({})
       setServerError(res.error.data.errors)
     }
@@ -28,7 +28,6 @@ const ChangePassword = () => {
       console.log(res.data.data.message)
       setServerError({})
       setServerMsg(res.data.data)
-      console.log(server_msg.message)
       document.getElementById("password-change-form").reset();
     }
 
@@ -52,7 +51,7 @@ const ChangePassword = () => {
           <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2, px: 5 }}> Update </Button>
         </Box>
         {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : ''}
-        {server_msg.msg ? <Alert severity='success'>{server_msg}</Alert> : ''}
+        {server_msg.message ? <Alert severity='success'>{server_msg.message}</Alert> : ''}
       </Box>
     </Box>
   </>;
