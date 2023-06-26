@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, CircularProgress, Typography } from '@mui/material';
-import { IonIcon } from 'react-ionicons';
+
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setUserToken } from '../../../features/authSlice';
@@ -49,7 +49,7 @@ const Signin = () => {
             <label htmlFor="">Email</label>
           </div>
           {serverError.errors && (
-            <Typography style={{ fontSize: 12, color: 'white', paddingLeft: 10 }}>
+            <Typography style={{ fontSize: 14, color: 'white', paddingLeft: 10 }}>
               {serverError.errors}
             </Typography>
           )}
@@ -63,14 +63,15 @@ const Signin = () => {
             <label htmlFor="">Password</label>
           </div>
           {serverError.errors && (
-            <Typography style={{ fontSize: 12, color: 'white', paddingLeft: 10 }}>
+            <Typography style={{ fontSize: 14, color: 'white', paddingLeft: 10 }}>
               {serverError.errors}
             </Typography>
           )}
           <div className="forget">
             <label htmlFor="">
-              <input type="checkbox" />Remember Me
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="checkbox" /> Remember me
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
               <a href="#">Forget Password</a>
             </label>
           </div>

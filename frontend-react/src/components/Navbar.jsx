@@ -1,10 +1,13 @@
-import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
+import { useState } from 'react';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { getToken } from '../services/LocalStorageService';
-import './navbar.css'
-const Navbar = () => {
-  const { access_token } = getToken()
-  return <>
+import './navbar.css';
+import { setUserInfo, unsetUserInfo } from '../features/userSlice';
+import { unSetUserToken } from '../features/authSlice';
+// const Navbar = () => {
+//   const { access_token } = getToken()
+//   return <>
     {/* <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="secondary">
         <Toolbar>
@@ -21,7 +24,7 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
     </Box> */}
-    <div className="navbar">
+    {/* <div className="navbar">
   <div className="logo">Logo</div>
   <div className="nav-links">
     <a href="/sign-up">Signup</a>
@@ -32,6 +35,56 @@ const Navbar = () => {
 </div>
 
   </>;
+}; */}
+
+// export default Navbar;
+const Navbar = () => {
+  const { access_token } = getToken();
+  const [isResponsive, setIsResponsive] = useState(false);
+
+  const toggleResponsive = () => {
+    setIsResponsive(!isResponsive);
+  };
+  const handleLogout = () => {
+    dispatch(unsetUserInfo({ name: '', email: '' }));
+    dispatch(unSetUserToken({ access_token: null }));
+    removeToken();
+    navigate('/login');
+  };
+
+  return (
+    <>
+     <div className={`navbar${isResponsive ? ' responsive' : ''}`}>
+        <div className="logo">Logo</div>
+        <div className="nav-links">
+          {access_token ? (
+            <>
+              <a href="/dashboard">Dashboard</a>
+              <a onClick={handleLogout} >Sign Out</a>
+            </>
+          ) : (
+            <>
+              <a href="/sign-up">Sign Up</a>
+              <a href="/sign-in">Sign In</a>
+            </>
+          )}
+        </div>
+        <div className="hamburger" onClick={toggleResponsive}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
