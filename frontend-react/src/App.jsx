@@ -16,7 +16,7 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-      {/* <Route path="/" element={<Layout />}> */}
+      <Route path="/" element={<Layout />}>
         <Route path="/register"element={!access_token ? <UserLogin /> : <Navigate to="/dashboard" />} />
         <Route path="/login" element={!access_token ? <UserLogin /> : <Navigate to="/dashboard" />} />
         {/* <Route path="/login" element={<UserLogin />} /> */}
@@ -24,9 +24,10 @@ function App() {
         <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
+        
       <Route path="/sign-in" element={<Signin />} />
       <Route path="/sign-up" element={<Signup />} />
-      {/* </Route> */}
+      </Route>
       </Routes>
       
       </BrowserRouter>

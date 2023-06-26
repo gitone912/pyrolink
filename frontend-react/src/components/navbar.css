@@ -1,0 +1,39 @@
+.navbar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.035); /* Adjust the alpha value to control transparency */
+  }
+  
+  .navbar.transparent {
+    background-color: transparent;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #fff;
+  }
+  
+  .nav-links {
+    margin-right: 30px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  

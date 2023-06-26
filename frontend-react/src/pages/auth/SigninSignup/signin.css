@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'poppins', sans-serif;
+  font-family: 'poppins',sans-serif;
 }
 
 body {
@@ -12,19 +12,19 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url(https://user-images.githubusercontent.com/13468728/233847739-219cb494-c265-4554-820a-bd3424c59065.jpg);
+  background-image: url(https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149155031.jpg?w=2000&t=st=1687806295~exp=1687806895~hmac=1bc20417b73ecba9492cf5762d94ad6d1c3310b4fdfa5484f28fbf054f151fc1);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-section {
+.section {
   position: relative;
   max-width: 400px;
   background-color: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  backdrop-filter: blur(55px);
+  backdrop-filter: blur(25px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ h1 {
   transition: all 0.5s ease-in-out;
 }
 
-input:focus ~ label,
+input:focus ~ label, 
 input:valid ~ label {
   top: -5px;
 }

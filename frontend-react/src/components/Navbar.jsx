@@ -1,10 +1,11 @@
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { getToken } from '../services/LocalStorageService';
+import './navbar.css'
 const Navbar = () => {
   const { access_token } = getToken()
   return <>
-    <Box sx={{ flexGrow: 1 }}>
+    {/* <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="secondary">
         <Toolbar>
           <Typography variant='h5' component="div" sx={{ flexGrow: 1 }}>Geek-Shop</Typography>
@@ -19,7 +20,17 @@ const Navbar = () => {
 
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box> */}
+    <div className="navbar">
+  <div className="logo">Logo</div>
+  <div className="nav-links">
+    <a href="/sign-up">Signup</a>
+    <a href="/sign-in">Signin</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+  </div>
+</div>
+
   </>;
 };
 

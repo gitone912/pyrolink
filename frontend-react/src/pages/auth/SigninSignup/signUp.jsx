@@ -1,44 +1,49 @@
 import React from 'react';
-import './style.css';
+import './signin.css';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+
+
 const Signup = () => {
   return (
-    <section className="signup-container">
-      <form className="signup-form">
-        <h1>Sign Up</h1>
+    <div className="section">
+      <form>
+        <h1>Signup</h1>
         <div className="inputbox">
-          <ion-icon name="person-outline"></ion-icon>
-          <input type="text" required name="name" />
-          <label htmlFor="name">Name </label>
+
+          <input type="text" required />
+          <label>Name</label>
         </div>
         <div className="inputbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" required name="email" />
-          <label htmlFor="email">Email</label>
+
+          <input type="email" required />
+          <label>Email</label>
         </div>
         <div className="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required name="password" />
-          <label htmlFor="password">Password</label>
+
+          <input type="password" required />
+          <label>Password</label>
         </div>
         <div className="inputbox">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required name="confirmPassword" />
-          <label htmlFor="confirmPassword">Confirm Password</label>
+
+          <input type="password" required />
+          <label>Confirm Password</label>
         </div>
-        <div className="terms">
-          <label htmlFor="terms">
-            <input type="checkbox" name="terms" />I agree to the terms and conditions
+        <div className="forget">
+          <label>
+            <input type="checkbox" required />
+            Remember Me
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </label>
+          <a href="#">Forget Password</a>
         </div>
-        <button>Sign Up</button>
-        <div className="login">
+        <button>Sign up</button>
+        <div className="register">
           <p>
             Already have an account? <a href="#">Login</a>
           </p>
         </div>
       </form>
-    </section>
+    </div>
   );
 };
 
