@@ -10,6 +10,7 @@ import SendPasswordResetEmail from './pages/auth/SendPasswordResetEmail'
 import ResetPassword from './pages/auth/ResetPassword'
 import Signin from './pages/auth/SigninSignup/signIn'
 import Signup from './pages/auth/SigninSignup/signUp'
+import './App.css'
 function App() {
   const { access_token } = useSelector(state => state.auth)
   return (

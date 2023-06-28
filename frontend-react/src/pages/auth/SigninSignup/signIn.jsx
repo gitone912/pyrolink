@@ -76,7 +76,7 @@ const Signin = () => {
             </label>
           </div>
 
-          <Box textAlign="center">
+          <button textAlign="center" style={{  color: 'white', background:'black' }}>
             {isLoading ? (
               <CircularProgress />
             ) : (
@@ -84,7 +84,7 @@ const Signin = () => {
                 Login
               </button>
             )}
-          </Box>
+          </button>
           {serverError.non_field_errors && (
             <Alert severity="error">{serverError.non_field_errors[0]}</Alert>
           )}

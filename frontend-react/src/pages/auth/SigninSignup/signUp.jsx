@@ -84,7 +84,7 @@ const Signup = () => {
           ) : null}
           <a href="#">Forget Password</a>
         </div>
-        <button type="submit">Sign up</button>
+        <button type="submit"  style={{  color: 'white', background:'black' }}>Sign up</button>
         <div className="register">
           <p>
             Already have an account? <a href="#">Login</a>

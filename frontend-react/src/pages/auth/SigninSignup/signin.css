@@ -12,7 +12,8 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url(https://img.freepik.com/free-vector/flat-design-forest-landscape_23-2149155031.jpg?w=2000&t=st=1687806295~exp=1687806895~hmac=1bc20417b73ecba9492cf5762d94ad6d1c3310b4fdfa5484f28fbf054f151fc1);
+  /* background-image: url(https://www.dropbox.com/scl/fi/9k95t0pi8l95mfbn605pw/pxfuel.jpg?raw=1&rlkey=ypz6ggssu3pt0n9hfyvd1dv2v); */
+  background-image: url("../../../images/pxfuel.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

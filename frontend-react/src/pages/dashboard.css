@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* background-image: url(https://www.dropbox.com/scl/fi/9k95t0pi8l95mfbn605pw/pxfuel.jpg?raw=1&rlkey=ypz6ggssu3pt0n9hfyvd1dv2v); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: aliceblue;
+  }
+  .hover\:grow {
+    transition: all 0.3s;
+    transform: scale(1);
+    aspect-ratio: 1 !important;
+    object-fit: cover;
+  }
+  
+  .hover\:grow:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Carousel */
+  .carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+  }
+  
+  .carousel-item {
+    transition: opacity 0.6s ease-out;
+  }
+  
+  #carousel-1:checked ~ .control-1,
+  #carousel-2:checked ~ .control-2,
+  #carousel-3:checked ~ .control-3 {
+    display: block;
+  }
+  
+  .carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+  }
