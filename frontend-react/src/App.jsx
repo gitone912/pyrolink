@@ -11,6 +11,7 @@ import ResetPassword from './pages/auth/ResetPassword'
 import Signin from './pages/auth/SigninSignup/signIn'
 import Signup from './pages/auth/SigninSignup/signUp'
 import './App.css'
+import NewComponent from './pages/cart/cart.jsx';
 function App() {
   const { access_token } = useSelector(state => state.auth)
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
-        
+        <Route path="/cart" element={<NewComponent />} />
       <Route path="/sign-in" element={<Signin />} />
       <Route path="/sign-up" element={<Signup />} />
       </Route>

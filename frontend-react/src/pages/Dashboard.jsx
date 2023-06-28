@@ -277,7 +277,7 @@ const Dashboard = () => {
                   <h3 className="font-bold text-gray-900">Social</h3>
                   <ul className="list-reset items-center pt-3">
                     <li>
-                      <a className="inline-block no-underline hover:text-black hover:underline py-1" href="https://github.com/vishal-dcode">Social links</a>
+                      <a className="inline-block no-underline hover:text-black hover:underline py-1" href="/">Social links</a>
                     </li>
                   </ul>
                 </div>

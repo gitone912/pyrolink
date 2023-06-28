@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <>
      <div className={`navbar${isResponsive ? ' responsive' : ''}`}>
-        <div className="logo">Logo</div>
+        <div className="logo"><img src="/vite.svg" alt="logo" /></div>
         <div className="nav-links">
           {access_token ? (
             <>

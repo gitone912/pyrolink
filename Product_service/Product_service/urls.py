@@ -1,8 +1,7 @@
-"""
-URL configuration for ProjectService project.
+"""shopping_cart_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/3.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -19,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("project.urls")),
+    path('cart/', include('shopping_cart_api.cart.urls')),
+    path('discounts/', include('shopping_cart_api.discounts.urls')),
+    path('products/', include('shopping_cart_api.products.urls')),
 ]
