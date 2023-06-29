@@ -1,5 +1,5 @@
 from django.db import models
-from shopping_cart_api.products.models import Product
+from products.models import Product
 
 
 class User(models.Model):
