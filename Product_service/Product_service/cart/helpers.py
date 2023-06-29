@@ -1,5 +1,5 @@
 from .models import Cart, DeliveryCost
-from shopping_cart_api.discounts.helpers import CampaignHelper, CouponHelper
+from discounts.helpers import CampaignHelper, CouponHelper
 
 
 class DeliveryCostHelper:
