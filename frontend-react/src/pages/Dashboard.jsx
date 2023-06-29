@@ -68,7 +68,7 @@ const Dashboard = () => {
       </Grid>
     </Grid> */}
 
-    <div>
+    <div className="dash">
       <br />
       <br />
       <br />
