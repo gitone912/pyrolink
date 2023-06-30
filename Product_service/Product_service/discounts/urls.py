@@ -7,5 +7,5 @@ router.register(r'campaign', views.CampaignViewSet)
 router.register(r'coupon', views.CouponViewSet)
 
 urlpatterns = [
-    path('', include((router.urls, 'shopping_cart_api.discounts'))),
+    path('', include((router.urls, 'Product_service.discounts'))),
 ]

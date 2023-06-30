@@ -1,4 +1,4 @@
-"""shopping_cart_api URL Configuration
+"""Product_service URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -18,7 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cart/', include('shopping_cart_api.cart.urls')),
-    path('discounts/', include('shopping_cart_api.discounts.urls')),
-    path('products/', include('shopping_cart_api.products.urls')),
+    path('cart/', include('Product_service.cart.urls')),
+    path('discounts/', include('Product_service.discounts.urls')),
+    path('products/', include('Product_service.products.urls')),
 ]

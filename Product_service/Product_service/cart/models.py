@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import Product
+from Product_service.products.models import Product
 
 
 class User(models.Model):

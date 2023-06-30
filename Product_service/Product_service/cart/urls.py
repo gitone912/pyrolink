@@ -8,5 +8,5 @@ router.register(r'delivery-cost', views.DeliveryCostViewSet)
 router.register(r'user', views.UserViewSet)
 
 urlpatterns = [
-    path('', include((router.urls, 'shopping_cart_api.cart'))),
+    path('', include((router.urls, 'Product_service.cart'))),
 ]

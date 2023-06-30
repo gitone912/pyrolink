@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import Product, Category
+from Product_service.products.models import Product, Category
 
 
 class Campaign(models.Model):
