@@ -13,6 +13,9 @@ import Signup from './pages/auth/SigninSignup/signUp'
 import './App.css'
 import NewComponent from './pages/cart/cart.jsx';
 import Navbar from './components/Navbar.jsx';
+import SignOut from './pages/auth/SigninSignup/signOut';
+
+
 function App() {
   const { access_token } = useSelector(state => state.auth)
   return (
@@ -32,6 +35,7 @@ function App() {
       
       <Route path="/sign-in" element={<Signin />} />
       <Route path="/sign-up" element={<Signup />} />
+      <Route path="/signOut" element={<SignOut/>} />
       
       </Routes>
       

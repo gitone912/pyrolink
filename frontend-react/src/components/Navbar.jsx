@@ -61,7 +61,7 @@ const Navbar = () => {
           {access_token ? (
             <>
               <a href="/dashboard">Dashboard</a>
-              <a onClick={handleLogout} >Sign Out</a>
+              <a href='/signOut' >Sign Out</a>
             </>
           ) : (
             <>

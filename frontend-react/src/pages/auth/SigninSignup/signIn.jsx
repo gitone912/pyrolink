@@ -7,6 +7,7 @@ import { setUserToken } from '../../../features/authSlice';
 import { getToken, storeToken } from '../../../services/LocalStorageService';
 import { useLoginUserMutation } from '../../../services/userAuthApi';
 import './signin.css';
+
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,9 +36,9 @@ const Signin = () => {
   };
 
   return (
-    <> 
-    <Navbar />
-    <div className="section">
+    <>
+      <Navbar />
+      <div className="section">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
           <div className="inputbox">
@@ -72,20 +73,19 @@ const Signin = () => {
             <label htmlFor="">
               <input type="checkbox" /> Remember me
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            
               <a href="#">Forget Password</a>
             </label>
           </div>
 
-          <button textAlign="center" style={{  color: 'white', background:'black' }}>
+          <div style={{ textAlign: 'center' }}>
             {isLoading ? (
               <CircularProgress />
             ) : (
-              <button type="submit" variant="contained" >
+              <Button type="submit" variant="contained" style={{ color: 'white', background: 'black' }}>
                 Login
-              </button>
+              </Button>
             )}
-          </button>
+          </div>
           {serverError.non_field_errors && (
             <Alert severity="error">{serverError.non_field_errors[0]}</Alert>
           )}
@@ -95,8 +95,8 @@ const Signin = () => {
             </p>
           </div>
         </form>
-      </div></>
-
+      </div>
+    </>
   );
 };
 
