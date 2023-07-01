@@ -12,6 +12,7 @@ import Signin from './pages/auth/SigninSignup/signIn'
 import Signup from './pages/auth/SigninSignup/signUp'
 import './App.css'
 import NewComponent from './pages/cart/cart.jsx';
+import Navbar from './components/Navbar.jsx';
 function App() {
   const { access_token } = useSelector(state => state.auth)
   return (
@@ -27,9 +28,11 @@ function App() {
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
         <Route path="/cart" element={<NewComponent />} />
+      </Route>
+      
       <Route path="/sign-in" element={<Signin />} />
       <Route path="/sign-up" element={<Signup />} />
-      </Route>
+      
       </Routes>
       
       </BrowserRouter>

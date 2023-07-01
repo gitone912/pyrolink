@@ -54,6 +54,7 @@ const Navbar = () => {
 
   return (
     <>
+    <section>
      <div className={`navbar${isResponsive ? ' responsive' : ''}`}>
         <div className="logo"><img src="/vite.svg" alt="logo" /></div>
         <div className="nav-links">
@@ -75,6 +76,7 @@ const Navbar = () => {
           <span></span>
         </div>
       </div>
+      </section>
     </>
   );
 };

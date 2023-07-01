@@ -31,6 +31,7 @@ const Signup = () => {
   };
 
   return (<>
+  <Navbar />
     {console.log(server_error)}
     <div className="section">
       <form onSubmit={handleSubmit}>

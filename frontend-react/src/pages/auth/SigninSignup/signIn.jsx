@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, CircularProgress, Typography } from '@mui/material';
-
+import Navbar from '../../../components/Navbar';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setUserToken } from '../../../features/authSlice';
@@ -35,7 +35,8 @@ const Signin = () => {
   };
 
   return (
-    <>
+    <> 
+    <Navbar />
     <div className="section">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
