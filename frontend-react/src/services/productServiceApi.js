@@ -2,18 +2,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 // Define a service using a base URL and expected endpoints
-export const productServiceApi = createApi({
-    reducerPath: 'productServiceApi',
+export const productApi = createApi({
+    reducerPath: 'productApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:8001/products/' }),
     endpoints: (builder) => ({
-        listProductCategories: builder.mutation({
-            query: (user) => ({
+        listProductCategories: builder.query({
+            query: () => ({
                 url: 'category/',
-                method: 'GET',
-                body: user,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                method: 'GET'
             }),
         }),
         singleProductCategory: builder.mutation({
@@ -63,4 +59,4 @@ export const productServiceApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const {useListProductCategoriesMutation,useSingleProductCategoryMutation,useCreateProductCategoryMutation,useUpdateProductCategoryMutation,useDeleteProductCategoryMutation } = productServiceApi
+export const {useListProductCategoriesQuery,useSingleProductCategoryMutation,useCreateProductCategoryMutation,useUpdateProductCategoryMutation,useDeleteProductCategoryMutation } = productApi
