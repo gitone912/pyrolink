@@ -12,15 +12,14 @@ export const productApi = createApi({
                 method: 'GET'
             }),
         }),
-        singleProductCategory: builder.mutation({
-            query: (categoryId,user) => ({
+        singleProductCategory: builder.query({
+            query: (categoryId) => {
+                console.log("id",categoryId)
+                return {
                 url: `category/${categoryId}/`,
-                method: 'POST',
-                body: user,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }),
+                method: 'GET'
+                }
+            },
         }),
         
         createProductCategory: builder.mutation({
@@ -44,14 +43,13 @@ export const productApi = createApi({
             }),
         }),
         deleteProductCategory: builder.mutation({
-            query: (categoryId,user) => ({
+            query: (categoryId) => {
+                console.log("id",categoryId)
+                return {
                 url: `category/${categoryId}/`,
-                method: 'DELETE',
-                body: user,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }),
+                method: 'DELETE'
+                }
+            },
         }),
 
     })
@@ -59,4 +57,4 @@ export const productApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const {useListProductCategoriesQuery,useSingleProductCategoryMutation,useCreateProductCategoryMutation,useUpdateProductCategoryMutation,useDeleteProductCategoryMutation } = productApi
+export const {useListProductCategoriesQuery,useSingleProductCategoryQuery,useCreateProductCategoryMutation,useUpdateProductCategoryMutation,useDeleteProductCategoryMutation } = productApi

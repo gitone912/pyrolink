@@ -1,7 +1,7 @@
 
 import Registration from './pages/auth/Registration.jsx'
 import { BrowserRouter, Route, Routes , Navigate } from 'react-router-dom'
-import Layout from './pages/Layout';
+import Layout from './layouts/Layout';
 import UserLogin from './pages/auth/UserLogin'
 import { useSelector } from 'react-redux';
 import Dashboard from "./pages/Dashboard";
@@ -14,7 +14,8 @@ import './App.css'
 import NewComponent from './pages/cart/cart.jsx';
 import Navbar from './components/Navbar.jsx';
 import SignOut from './pages/auth/SigninSignup/signOut';
-import ListProductCategories from './pages/test.jsx';
+import ListProductCategories from './pages/products/productList.jsx';
+import GetOneProductCategory from './pages/products/singleProduct.jsx';
 
 function App() {
   const { access_token } = useSelector(state => state.auth)
@@ -31,7 +32,8 @@ function App() {
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
         <Route path="/cart" element={<NewComponent />} />
-        <Route exact path="/categories" element={<ListProductCategories />} />
+        <Route path="/categories" element={<ListProductCategories />} />
+        <Route path='/categoriesid' element={<GetOneProductCategory />}/>
       </Route>
       
       <Route path="/sign-in" element={<Signin />} />
