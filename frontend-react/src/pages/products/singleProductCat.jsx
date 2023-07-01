@@ -1,7 +1,7 @@
 import { useSingleProductCategoryQuery } from "../../services/productServiceApi";
 
 const GetOneProductCategory = () => {
-    const responseInfo = useSingleProductCategoryQuery(2);
+    const responseInfo = useSingleProductCategoryQuery(5);
     console.log(responseInfo);
     console.log(responseInfo.currentData);
 

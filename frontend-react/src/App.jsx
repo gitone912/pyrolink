@@ -14,8 +14,11 @@ import './App.css'
 import NewComponent from './pages/cart/cart.jsx';
 import Navbar from './components/Navbar.jsx';
 import SignOut from './pages/auth/SigninSignup/signOut';
-import ListProductCategories from './pages/products/productList.jsx';
-import GetOneProductCategory from './pages/products/singleProduct.jsx';
+import ListProductCategories from './pages/products/productListCat.jsx';
+import GetOneProductCategory from './pages/products/singleProductCat.jsx';
+import DeleteProductCategory from './pages/products/deleteProductCat.jsx';
+import CreateProductCategory from './pages/products/createProductCat.jsx';
+import UpdateProductCategory from './pages/products/updateProductCat.jsx';
 
 function App() {
   const { access_token } = useSelector(state => state.auth)
@@ -32,8 +35,14 @@ function App() {
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
         <Route path="/cart" element={<NewComponent />} />
+
+
+        
         <Route path="/categories" element={<ListProductCategories />} />
         <Route path='/categoriesid' element={<GetOneProductCategory />}/>
+        <Route path="/categoriesdelete" element={<DeleteProductCategory />} />
+        <Route path="/categoriescreate" element={<CreateProductCategory />} />
+        <Route path="/categoriesupdate" element={<UpdateProductCategory />} />
       </Route>
       
       <Route path="/sign-in" element={<Signin />} />

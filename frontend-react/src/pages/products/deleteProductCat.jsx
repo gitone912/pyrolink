@@ -6,7 +6,7 @@ const DeleteProductCategory = () =>{
     if (responseInfo.isError) return <div>error occured {responseInfo.error.error} </div>
     return(
         <div>
-            <button onClick={()=>{deleteProduct(2)}}>
+            <button onClick={()=>{deleteProduct(1)}}>
                 delete post
             </button>
         </div>
