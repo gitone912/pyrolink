@@ -1,14 +1,4 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    /* background-image: url(https://www.dropbox.com/scl/fi/9k95t0pi8l95mfbn605pw/pxfuel.jpg?raw=1&rlkey=ypz6ggssu3pt0n9hfyvd1dv2v); */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: aliceblue;
-  }
+
   .hover\:grow {
     transition: all 0.3s;
     transform: scale(1);

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, CircularProgress, Typography } from '@mui/material';
-import Navbar from '../../../components/Navbar';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setUserToken } from '../../../features/authSlice';
 import { getToken, storeToken } from '../../../services/LocalStorageService';
 import { useLoginUserMutation } from '../../../services/userAuthApi';
-import './signin.css';
+// import './signin.css';
 
 const Signin = () => {
   const [email, setEmail] = useState('');
@@ -37,7 +36,6 @@ const Signin = () => {
 
   return (
     <>
-      <Navbar />
       <div className="section">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>

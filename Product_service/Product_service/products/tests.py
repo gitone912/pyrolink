@@ -21,6 +21,7 @@ class ProductTests(APITestCase):
         self.test_product = Product.objects.create(category=self.test_category,
                                                    title='Test Product',
                                                    price=100.00,
+                                                        image_link='Test Image Link',
                                                    technical_details='Test Technical Details',
                                                    rating=4.5)
 

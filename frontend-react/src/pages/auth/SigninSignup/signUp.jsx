@@ -4,7 +4,7 @@ import { useRegisterUserMutation } from '../../../services/userAuthApi';
 import { storeToken } from '../../../services/LocalStorageService';
 import './signin.css';
 import { Typography } from '@mui/material';
-import Navbar from '../../../components/Navbar';
+
 
 const Signup = () => {
   const [server_error, setServerError] = useState({});
@@ -32,7 +32,7 @@ const Signup = () => {
   };
 
   return (<>
-  <Navbar />
+
     {console.log(server_error)}
     <div className="section">
       <form onSubmit={handleSubmit}>
