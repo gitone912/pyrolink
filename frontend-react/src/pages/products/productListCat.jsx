@@ -1,6 +1,6 @@
 import { useListProductCategoriesQuery } from "../../services/productServiceApi";
 
-const listProducts= () => {
+const ListProductCategories= () => {
     const responseInfo = useListProductCategoriesQuery()
     console.log(responseInfo)
     if (responseInfo.isLoading) return <div>is loading......</div>
@@ -23,4 +23,4 @@ const listProducts= () => {
         
     )
 }
-export default listProducts
+export default ListProductCategories

@@ -19,6 +19,7 @@ import GetOneProductCategory from './pages/products/singleProductCat.jsx';
 import DeleteProductCategory from './pages/products/deleteProductCat.jsx';
 import CreateProductCategory from './pages/products/createProductCat.jsx';
 import UpdateProductCategory from './pages/products/updateProductCat.jsx';
+import ListProducts from './pages/products/productList.jsx';
 
 function App() {
   const { access_token } = useSelector(state => state.auth)
@@ -37,12 +38,16 @@ function App() {
         <Route path="/cart" element={<NewComponent />} />
 
 
-        
+
         <Route path="/categories" element={<ListProductCategories />} />
         <Route path='/categoriesid' element={<GetOneProductCategory />}/>
         <Route path="/categoriesdelete" element={<DeleteProductCategory />} />
         <Route path="/categoriescreate" element={<CreateProductCategory />} />
         <Route path="/categoriesupdate" element={<UpdateProductCategory />} />
+
+
+        
+        <Route path="/products" element={<ListProducts />} />
       </Route>
       
       <Route path="/sign-in" element={<Signin />} />
