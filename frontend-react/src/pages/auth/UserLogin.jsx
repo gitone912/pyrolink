@@ -54,6 +54,7 @@ const UserLogin = () => {
       <NavLink to='/send-password-reset-email/' >Forgot Password ?</NavLink>
       {server_error.non_field_errors ? <Alert severity='error'>{server_error.non_field_errors[0]}</Alert> : ''}
     </Box>
+    
   </>;
 };
 

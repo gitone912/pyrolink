@@ -20,7 +20,7 @@ import DeleteProductCategory from './pages/products/deleteProductCat.jsx';
 import CreateProductCategory from './pages/products/createProductCat.jsx';
 import UpdateProductCategory from './pages/products/updateProductCat.jsx';
 import ListProducts from './pages/products/productList.jsx';
-
+import DefaultCarousel from './pages/new.jsx';
 function App() {
   const { access_token } = useSelector(state => state.auth)
   return (
@@ -44,15 +44,17 @@ function App() {
         <Route path="/categoriesdelete" element={<DeleteProductCategory />} />
         <Route path="/categoriescreate" element={<CreateProductCategory />} />
         <Route path="/categoriesupdate" element={<UpdateProductCategory />} />
+       
 
-
+     <Route path="/sign-in" element={<Signin />} />
+      <Route path="/sign-up" element={<Signup />} />
+      <Route path="/signOut" element={<SignOut/>} />
+      <Route path="/carousel" element={<DefaultCarousel />} />
         
         <Route path="/products" element={<ListProducts />} />
       </Route>
       
-      <Route path="/sign-in" element={<Signin />} />
-      <Route path="/sign-up" element={<Signup />} />
-      <Route path="/signOut" element={<SignOut/>} />
+     
       
       </Routes>
       
