@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
-import { Box, TextField, Button, CircularProgress, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { setUserToken } from '../../../features/authSlice';
-import { getToken, storeToken } from '../../../services/LocalStorageService';
-import { useLoginUserMutation } from '../../../services/userAuthApi';
-// import './signin.css';
+import React, { useState } from "react";
+import {
+  Box,
+  TextField,
+  Button,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setUserToken } from "../../../features/authSlice";
+import { getToken, storeToken } from "../../../services/LocalStorageService";
+import { useLoginUserMutation } from "../../../services/userAuthApi";
+import { Alert } from "@material-tailwind/react";
 
 const Signin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [serverError, setServerError] = useState({});
   const navigate = useNavigate();
   const [loginUser, { isLoading }] = useLoginUserMutation();
@@ -30,7 +36,7 @@ const Signin = () => {
       storeToken(res.data.data.token);
       let { access_token } = getToken();
       dispatch(setUserToken({ access_token: access_token }));
-      navigate('/dashboard');
+      navigate("/dashboard");
     }
   };
 
@@ -95,8 +101,6 @@ const Signin = () => {
         </form>
       </div> */}
 
-
-
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -110,9 +114,22 @@ const Signin = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          {serverError.errors && (
+            <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-medium">
+              {serverError.errors}
+            </Alert>
+          )}
+          {serverError.non_field_errors && (
+            <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-medium">
+              {serverError.non_field_errors[0]}
+            </Alert>
+          )}
+          <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
                 Email address
               </label>
               <div className="mt-2">
@@ -121,6 +138,8 @@ const Signin = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -129,11 +148,17 @@ const Signin = () => {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Password
                 </label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                  <a
+                    href="#"
+                    className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >
                     Forgot password?
                   </a>
                 </div>
@@ -144,6 +169,8 @@ const Signin = () => {
                   name="password"
                   type="password"
                   autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -161,9 +188,12 @@ const Signin = () => {
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-              Start a 14 day free trial
+            Not a member?{" "}
+            <a
+              href="/sign-up"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
+              Sign Up here
             </a>
           </p>
         </div>
