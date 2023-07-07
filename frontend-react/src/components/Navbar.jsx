@@ -1,24 +1,9 @@
-import { useState } from 'react';
 
-import { NavLink } from 'react-router-dom';
-import { getToken } from '../services/LocalStorageService';
 // import './navbar.css';
-import { setUserInfo, unsetUserInfo } from '../features/userSlice';
-import { unSetUserToken } from '../features/authSlice';
+
 
 // const Navbarx = () => {
-//   const { access_token } = getToken();
-//   const [isResponsive, setIsResponsive] = useState(false);
-
-//   const toggleResponsive = () => {
-//     setIsResponsive(!isResponsive);
-//   };
-//   const handleLogout = () => {
-//     dispatch(unsetUserInfo({ name: '', email: '' }));
-//     dispatch(unSetUserToken({ access_token: null }));
-//     removeToken();
-//     navigate('/login');
-//   };
+//   
 
 //   return (
 //     <>
@@ -52,8 +37,11 @@ import { unSetUserToken } from '../features/authSlice';
 
 // export default Navbarx;
 
-
-
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { getToken } from '../services/LocalStorageService';
+import { setUserInfo, unsetUserInfo } from '../features/userSlice';
+import { unSetUserToken } from '../features/authSlice';
 import React from "react";
 import {
   Navbar,
@@ -266,7 +254,25 @@ function NavList() {
   );
 }
  
-export default function Example() {
+export default function Navbarx() {
+  const { access_token } = getToken();
+  const [isResponsive, setIsResponsive] = useState(false);
+
+  const toggleResponsive = () => {
+    setIsResponsive(!isResponsive);
+  };
+  const handleSignInClick = () => {
+    window.location.href = '/sign-in';
+  };
+  const handleSignOutClick = () => {
+    window.location.href = '/signOut';
+  };
+  const handleSignUpClick = () => {
+    window.location.href = '/sign-up';
+  };
+  const handleDashboardClick = () => {
+    window.location.href = '/dashboard';
+  };
   const [openNav, setOpenNav] = React.useState(false);
  
   React.useEffect(() => {
@@ -277,6 +283,8 @@ export default function Example() {
   }, []);
  
   return (
+    <>
+    
     <Navbar className="mx-auto max-w-screen-xl px-4 py-2">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
@@ -290,14 +298,30 @@ export default function Example() {
         <div className="hidden lg:block">
           <NavList />
         </div>
-        <div className="hidden gap-2 lg:flex">
-          <Button variant="text" size="sm" color="blue-gray">
+       {access_token ? (
+     <>
+     <div className="hidden gap-2 lg:flex">
+          <Button variant="text" size="sm" color="blue-gray" onClick={handleDashboardClick}>
+            Dashboard
+          </Button>
+          <Button variant="gradient" size="sm" onClick={handleSignOutClick}>
+            Sign Out
+          </Button>
+        </div>
+   </>
+    ) : (
+      <>
+      <div className="hidden gap-2 lg:flex">
+          <Button variant="text" size="sm" color="blue-gray" onClick={handleSignInClick}>
             Sign In
           </Button>
-          <Button variant="gradient" size="sm">
+          <Button variant="gradient" size="sm" onClick={handleSignUpClick }>
             Sign Up
           </Button>
         </div>
+    </>
+  )}
+       
         <IconButton
           variant="text"
           color="blue-gray"
@@ -313,15 +337,31 @@ export default function Example() {
       </div>
       <Collapse open={openNav}>
         <NavList />
+        {access_token ? (
+     <>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
           <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
-            Sign In
+           Dashboard
+          </Button>
+          <Button variant="gradient" size="sm" fullWidth>
+            Sign Out
+          </Button>
+        </div>
+        </>
+    ) : (
+      <>
+        <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
+          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+           Sign In
           </Button>
           <Button variant="gradient" size="sm" fullWidth>
             Sign Up
           </Button>
         </div>
+        </>
+  )}
       </Collapse>
     </Navbar>
+    </>
   );
 }

@@ -42,70 +42,12 @@ const Signin = () => {
 
   return (
     <>
-      {/* <div className="section">
-        <form onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          <div className="inputbox">
-            <ion-icon name="mail-outline"></ion-icon>
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} />
-            <label htmlFor="">Email</label>
-          </div>
-          {serverError.errors && (
-            <Typography style={{ fontSize: 14, color: 'white', paddingLeft: 10 }}>
-              {serverError.errors}
-            </Typography>
-          )}
-          <div className="inputbox">
-            <ion-icon name="lock-closed-outline"></ion-icon>
-            <input
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} />
-            <label htmlFor="">Password</label>
-          </div>
-          {serverError.errors && (
-            <Typography style={{ fontSize: 14, color: 'white', paddingLeft: 10 }}>
-              {serverError.errors}
-            </Typography>
-          )}
-          <div className="forget">
-            <label htmlFor="">
-              <input type="checkbox" /> Remember me
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="#">Forget Password</a>
-            </label>
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
-            {isLoading ? (
-              <CircularProgress />
-            ) : (
-              <Button type="submit" variant="contained" style={{ color: 'white', background: 'black' }}>
-                Login
-              </Button>
-            )}
-          </div>
-          {serverError.non_field_errors && (
-            <Alert severity="error">{serverError.non_field_errors[0]}</Alert>
-          )}
-          <div className="register">
-            <p>
-              Already have an account <a href="/sign-up">Register</a>
-            </p>
-          </div>
-        </form>
-      </div> */}
 
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="./vite.svg"
             alt="Your Company"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

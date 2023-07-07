@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
-import { useRegisterUserMutation } from '../../../services/userAuthApi';
-import { storeToken } from '../../../services/LocalStorageService';
-// import './signin.css';
-import { Typography } from '@mui/material';
-
+import React, { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
+import { useRegisterUserMutation } from "../../../services/userAuthApi";
+import { storeToken } from "../../../services/LocalStorageService";
+import { Alert } from "@material-tailwind/react";
+import { Checkbox, Typography } from "@material-tailwind/react";
 
 const Signup = () => {
   const [server_error, setServerError] = useState({});
@@ -15,11 +14,11 @@ const Signup = () => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const actualData = {
-      name: data.get('name'),
-      email: data.get('email'),
-      password: data.get('password'),
-      confirmPassword: data.get('confirmPassword'),
-      terms: data.get('terms'),
+      name: data.get("name"),
+      email: data.get("email"),
+      password: data.get("password"),
+      confirmPassword: data.get("confirmPassword"),
+      terms: data.get("terms"),
     };
     const res = await registerUser(actualData);
     if (res.error) {
@@ -27,73 +26,176 @@ const Signup = () => {
     }
     if (res.data) {
       storeToken(res.data.data.token);
-      navigate('/dashboard');
+      navigate("/dashboard");
     }
   };
 
-  return (<>
+  return (
+    <>
+      {console.log(server_error)}
+      
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img
+            className="mx-auto h-10 w-auto"
+            src="./vite.svg"
+            alt="Your Company"
+          />
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Create your account
+          </h2>
+        </div>
 
-    {console.log(server_error)}
-    <div className="section">
-      <form onSubmit={handleSubmit}>
-        <h1>Signup</h1>
-        <div className="inputbox">
-          <input type="text" name="name" required />
-          <label>Name</label>
-        </div>
-        {server_error.name ? (
-          <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
-            {server_error.name[0]}
-          </Typography>
-        ) : null}
-        <div className="inputbox">
-          <input type="email" name="email" required />
-          <label>Email</label>
-        </div>
-        {server_error.email ? (
-          <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <div>
+              
+              <label className="block text-sm font-medium leading-6 text-gray-900">
+                Full Name
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              {server_error.name ? (
+                <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
+                  {server_error.name[0]}
+                </Alert>
+              ) : null}
+            </div>
+
+            <div>
+            
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              {server_error.email ? (
+                <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
             {server_error.email[0]}
-          </Typography>
+            </Alert>
+          
         ) : null}
-        <div className="inputbox">
-          <input type="password" name="password" required />
-          <label>Password</label>
-        </div>
-        {server_error.password ? (
-          <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between">
+              
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Password
+                </label>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              {server_error.password ? (
+                <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
             {server_error.password}
-          </Typography>
+            </Alert>
         ) : null}
-        <div className="inputbox">
-          <input type="password" name="confirmPassword" required />
-          <label>Confirm Password</label>
-        </div>
-        {server_error.confirmPassword ? (
-          <Typography style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
+            </div>
+            <div>
+              <div className="flex items-center justify-between">
+              
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Password
+                </label>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="confirmPassword"
+                  type="password"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+              {server_error.confirmPassword ? (
+                <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
             {server_error.confirmPassword[0]}
-          </Typography>
+            </Alert>
         ) : null}
-        <div className="forget">
-          <label>
-            <input type="checkbox" required name="terms" id="terms" />
-            I agree to term and condition.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </label>
-          {server_error.terms ? (
+            </div>
+            {server_error.terms ? (
             <span style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
               {server_error.terms[0]}
             </span>
           ) : null}
-          <a href="#">Forget Password</a>
-        </div>
-        <button type="submit"  style={{  color: 'white', background:'black' }}>Sign up</button>
-        <div className="register">
-          <p>
-            Already have an account? <a href="#">Login</a>
+            <Checkbox
+            name="terms"
+                    id="terms"
+              label={
+                <Typography color="blue-gray" className="font-medium flex" >
+                  I agree with the
+                  <Typography
+                    as="a"
+                    href="#"
+                    color="blue"
+                    className="font-medium hover:text-blue-700 transition-colors"
+                    required
+                    
+                  >
+                    &nbsp;terms and conditions
+                  </Typography>
+                  .
+                </Typography>
+              }
+            />
+            <div>
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in
+              </button>
+            </div>
+          </form>
+
+          <p className="mt-10 text-center text-sm text-gray-500">
+            Already a member?{" "}
+            <a
+              href="/sign-in"
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
+              Sign In here
+            </a>
           </p>
         </div>
-      </form>
-    </div>
+      </div>
     </>
   );
 };
