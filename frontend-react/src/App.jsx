@@ -21,6 +21,7 @@ import CreateProductCategory from './pages/products/createProductCat.jsx';
 import UpdateProductCategory from './pages/products/updateProductCat.jsx';
 import ListProducts from './pages/products/productList.jsx';
 import DefaultCarousel from './pages/new.jsx';
+import Error404 from './pages/notFound404.jsx';
 function App() {
   const { access_token } = useSelector(state => state.auth)
   return (
@@ -31,7 +32,7 @@ function App() {
         <Route path="/register"element={!access_token ? <UserLogin /> : <Navigate to="/dashboard" />} />
         <Route path="/login" element={!access_token ? <UserLogin /> : <Navigate to="/dashboard" />} />
         {/* <Route path="/login" element={<UserLogin />} /> */}
-        <Route path="*" element={<h1>Error 404 Page not found !!</h1>} />
+        <Route path="*" element={<Error404 /> } />
         <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
