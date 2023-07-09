@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { unSetUserToken } from "../features/authSlice";
 import { getToken, removeToken } from "../services/LocalStorageService";
-import ChangePassword from "./auth/ChangePassword";
+import ChangePassword from "./auth/Password/ChangePassword";
 import { useGetLoggedUserQuery } from "../services/userAuthApi";
 import { useEffect, useState } from "react";
 import { setUserInfo, unsetUserInfo } from "../features/userSlice";
@@ -255,7 +255,7 @@ const Dashboard = () => {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="sr-only">Products</h2>
 
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <Card key={product.id} className="group">
                 <CardHeader color="blue-gray">
@@ -324,6 +324,20 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <div className="flex flex-col items-center gap-4">
+      
+      <Button
+        size="lg"
+        variant="outlined"
+        color="blue-gray"
+        className="flex items-center gap-3"
+      >
+        <img src="/icons/google.svg" alt="metamask" className="h-6 w-6" />
+        Explore More Projects
+      </Button>
+      
+    </div>
       <div className="container mx-auto pt-16">
         <div className="lg:flex">
           <div className="xl:w-2/5 lg:w-2/5 bg-gray-600 py-16 xl:rounded-bl rounded-tl rounded-tr xl:rounded-tr-none">

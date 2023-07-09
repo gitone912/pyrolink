@@ -36,7 +36,7 @@ const Signin = () => {
       storeToken(res.data.data.token);
       let { access_token } = getToken();
       dispatch(setUserToken({ access_token: access_token }));
-      navigate("/dashboard");
+      window.location.href = '/dashboard';
     }
   };
 

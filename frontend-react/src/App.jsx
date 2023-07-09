@@ -6,8 +6,8 @@ import UserLogin from './pages/auth/UserLogin'
 import { useSelector } from 'react-redux';
 import Dashboard from "./pages/Dashboard";
 import LoginReg from "./pages/auth/LoginReg";
-import SendPasswordResetEmail from './pages/auth/SendPasswordResetEmail'
-import ResetPassword from './pages/auth/ResetPassword'
+import SendPasswordResetEmail from './pages/auth/Password/SendPasswordResetEmail.jsx'
+import ResetPassword from './pages/auth/Password/ResetPassword.jsx'
 import Signin from './pages/auth/SigninSignup/signIn'
 import Signup from './pages/auth/SigninSignup/signUp'
 import './App.css'
@@ -20,10 +20,11 @@ import DeleteProductCategory from './pages/products/deleteProductCat.jsx';
 import CreateProductCategory from './pages/products/createProductCat.jsx';
 import UpdateProductCategory from './pages/products/updateProductCat.jsx';
 import ListProducts from './pages/products/productList.jsx';
-import DefaultCarousel from './pages/new.jsx';
+import { getToken } from './services/LocalStorageService.js';
 import Error404 from './pages/notFound404.jsx';
 function App() {
-  const { access_token } = useSelector(state => state.auth)
+  
+  const { access_token } = getToken();
   return (
     <>
       <BrowserRouter>
@@ -33,7 +34,7 @@ function App() {
         <Route path="/login" element={!access_token ? <UserLogin /> : <Navigate to="/dashboard" />} />
         {/* <Route path="/login" element={<UserLogin />} /> */}
         <Route path="*" element={<Error404 /> } />
-        <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/login" />} />
+        <Route path="/dashboard" element={access_token ? <Dashboard /> : <Navigate to="/sign-in" />} />
         <Route path="/send-password-reset-email/" element= {<SendPasswordResetEmail />} />
         <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
         <Route path="/cart" element={<NewComponent />} />
@@ -50,7 +51,7 @@ function App() {
      <Route path="/sign-in" element={<Signin />} />
       <Route path="/sign-up" element={<Signup />} />
       <Route path="/signOut" element={<SignOut/>} />
-      <Route path="/carousel" element={<DefaultCarousel />} />
+
         
         <Route path="/products" element={<ListProducts />} />
       </Route>

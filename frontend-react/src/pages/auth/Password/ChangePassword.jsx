@@ -1,8 +1,8 @@
 import { Box, TextField, Button, Alert, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useChangeUserPasswordMutation } from '../../services/userAuthApi';
-import { getToken } from '../../services/LocalStorageService'
+import { useChangeUserPasswordMutation } from '../../../services/userAuthApi';
+import { getToken } from '../../../services/LocalStorageService'
 
 
 const ChangePassword = () => {
