@@ -6,7 +6,7 @@ import ChangePassword from "./auth/Password/ChangePassword";
 import { useGetLoggedUserQuery } from "../services/userAuthApi";
 import { useEffect, useState } from "react";
 import { setUserInfo, unsetUserInfo } from "../features/userSlice";
-
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {
   Carousel,
   Card,
@@ -162,7 +162,7 @@ const Dashboard = () => {
       <style>
         {`
     .carouselHeight {
-      height: 50vh;
+      height: 45vh;
     }
   `}
       </style>
@@ -170,6 +170,7 @@ const Dashboard = () => {
         className="rounded-xl  carouselHeight "
         transition={{ duration: 1 }}
         autoplay={true}
+        onChange={reorderSlides}
       >
         <div className="relative h-full w-full">
           <img
