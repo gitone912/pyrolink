@@ -6,7 +6,6 @@ import ChangePassword from "./auth/Password/ChangePassword";
 import { useGetLoggedUserQuery } from "../services/userAuthApi";
 import { useEffect, useState } from "react";
 import { setUserInfo, unsetUserInfo } from "../features/userSlice";
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import {
   Carousel,
   Card,
@@ -35,8 +34,7 @@ const Dashboard = () => {
       name: "Earthen Bottle",
       href: "#",
       price: "$48",
-      imageSrc:
-        "https://source.unsplash.com/random/?javascript",
+      imageSrc: "https://source.unsplash.com/random/?javascript",
       imageAlt:
         "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
       rating: 5,
@@ -46,8 +44,7 @@ const Dashboard = () => {
       name: "Nomad Tumbler",
       href: "#",
       price: "$35",
-      imageSrc:
-        "https://source.unsplash.com/random/?programming",
+      imageSrc: "https://source.unsplash.com/random/?programming",
       imageAlt:
         "Olive drab green insulated bottle with flared screw lid and flat top.",
       rating: 4,
@@ -57,8 +54,7 @@ const Dashboard = () => {
       name: "Focus Paper Refill",
       href: "#",
       price: "$89",
-      imageSrc:
-        "https://source.unsplash.com/random/?python", 
+      imageSrc: "https://source.unsplash.com/random/?python",
       imageAlt:
         "Person using a pen to cross a task off a productivity paper card.",
       rating: 3,
@@ -68,8 +64,7 @@ const Dashboard = () => {
       name: "Machined Mechanical Pencil",
       href: "#",
       price: "$35",
-      imageSrc:
-        "https://source.unsplash.com/random/?java",
+      imageSrc: "https://source.unsplash.com/random/?java",
       imageAlt:
         "Hand holding black machined steel mechanical pencil with brass tip and top.",
       rating: 5,
@@ -79,8 +74,7 @@ const Dashboard = () => {
       name: "Machined Mechanical Pencil",
       href: "#",
       price: "$35",
-      imageSrc:
-        "https://source.unsplash.com/random/?typescript",
+      imageSrc: "https://source.unsplash.com/random/?typescript",
       imageAlt:
         "Hand holding black machined steel mechanical pencil with brass tip and top.",
       rating: 1,
@@ -90,8 +84,7 @@ const Dashboard = () => {
       name: "Machined Mechanical Pencil",
       href: "#",
       price: "$35",
-      imageSrc:
-        "https://source.unsplash.com/random/?react",
+      imageSrc: "https://source.unsplash.com/random/?react",
       imageAlt:
         "Hand holding black machined steel mechanical pencil with brass tip and top.",
       rating: 2,
@@ -112,8 +105,7 @@ const Dashboard = () => {
       name: "Machined Mechanical Pencil",
       href: "#",
       price: "$35",
-      imageSrc:
-        "https://source.unsplash.com/random/?java",
+      imageSrc: "https://source.unsplash.com/random/?java",
       imageAlt:
         "Hand holding black machined steel mechanical pencil with brass tip and top.",
       rating: 5,
@@ -168,9 +160,10 @@ const Dashboard = () => {
       </style>
       <Carousel
         className="rounded-xl  carouselHeight "
-        transition={{ duration: 1 }}
+        transition={{ duration: 1 ,type: "tween"}}
         autoplay={true}
-        onChange={reorderSlides}
+        loop={true}
+        
       >
         <div className="relative h-full w-full">
           <img
@@ -316,8 +309,9 @@ const Dashboard = () => {
                     className="bg-gray-300 text-black hover:bg-gray-500 hover:shadow-md"
                   >
                     <Typography variant="h6" className="text-purple-600 inline">
-    {product.price}
-  </Typography> &nbsp;&nbsp;&nbsp; Add to cart
+                      {product.price}
+                    </Typography>{" "}
+                    &nbsp;&nbsp;&nbsp; Add to cart
                   </Button>
                 </CardFooter>
               </Card>
@@ -327,18 +321,16 @@ const Dashboard = () => {
       </div>
 
       <div className="flex flex-col items-center gap-4">
-      
-      <Button
-        size="lg"
-        variant="outlined"
-        color="blue-gray"
-        className="flex items-center gap-3"
-      >
-        <img src="/icons/google.svg" alt="metamask" className="h-6 w-6" />
-        Explore More Projects
-      </Button>
-      
-    </div>
+        <Button
+          size="lg"
+          variant="outlined"
+          color="blue-gray"
+          className="flex items-center gap-3"
+        >
+          <img src="/icons/google.svg" alt="metamask" className="h-6 w-6" />
+          Explore More Projects
+        </Button>
+      </div>
       <div className="container mx-auto pt-16">
         <div className="lg:flex">
           <div className="xl:w-2/5 lg:w-2/5 bg-gray-600 py-16 xl:rounded-bl rounded-tl rounded-tr xl:rounded-tr-none">
@@ -505,5 +497,4 @@ const Dashboard = () => {
     </>
   );
 };
-
 export default Dashboard;

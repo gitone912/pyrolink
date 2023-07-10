@@ -1,5 +1,5 @@
 import { useListProductsQuery } from "../../services/productServiceApi";
-
+import { useListProductCategoriesQuery } from "../../services/productServiceApi";
 import {
   Carousel,
   Card,
@@ -10,6 +10,10 @@ import {
   Button,
   Tooltip,
   IconButton,
+  Radio,
+  List,
+  ListItem,
+  ListItemPrefix,
 } from "@material-tailwind/react";
 import {
   BanknotesIcon,
@@ -20,28 +24,80 @@ import {
   TvIcon,
   FireIcon,
 } from "@heroicons/react/24/solid";
+import { Fragment } from 'react'
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+
 
 const ListProducts = () => {
   const responseInfo = useListProductsQuery();
+  const CategoryInfo = useListProductCategoriesQuery();
+
+
+  
+
+
 
   if (responseInfo.isLoading) return <div>Loading...</div>;
   if (responseInfo.isError)
     return <div>Error occurred: {responseInfo.error.error}</div>;
+  if (responseInfo.isLoading) return <div>is loading......</div>
+  if (responseInfo.isError) return <div>error occured {responseInfo.error.error} </div>
+
+
 
   const products = responseInfo.data;
   console.log(products);
+  console.log(products[0].category);
+
+  const category= CategoryInfo.data;
+  console.log(category);
+  console.log(category[0].title);
+
+
 
   return (
     <>
     <div className="flex justify-center items-center mt-8 mb-4 px-4">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900">
-          Products
+        All Projects
         </h2>
+        
       </div>
+      <div className="flex justify-center items-center mt-8 mb-4 px-4">
+      <Card className="w-full max-w-[32rem]">
+      <List className="flex-row">
+      {category.map((category) => (
+        <ListItem className="p-0">
+          <label htmlFor="horizontal-list-react" className="px-3 py-2 flex items-center w-full cursor-pointer">
+            <ListItemPrefix className="mr-3">
+              <Radio 
+                name="horizontal-list"
+                id="horizontal-list-react" 
+                ripple={false} 
+                className="hover:before:opacity-0"
+                containerProps={{
+                  className: "p-0"
+                }}
+              />
+            </ListItemPrefix>
+            <Typography color="blue-gray" className="font-medium">{category.title}</Typography>
+          </label>
+        </ListItem>
+        
+        ))}
+        
+        
+      </List>
+    </Card>
+    </div>
 
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 className="sr-only">Products</h2>
+          <h2 className="sr-only">All Projects</h2>
+
+          
 
           <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (

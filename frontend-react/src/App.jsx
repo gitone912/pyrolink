@@ -22,6 +22,7 @@ import UpdateProductCategory from './pages/products/updateProductCat.jsx';
 import ListProducts from './pages/products/productList.jsx';
 import { getToken } from './services/LocalStorageService.js';
 import Error404 from './pages/notFound404.jsx';
+
 function App() {
   
   const { access_token } = getToken();
