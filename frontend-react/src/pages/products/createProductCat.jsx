@@ -1,7 +1,10 @@
 import { useCreateProductCategoryMutation } from "../../services/productServiceApi";
+import { useSaveUserIdMutation } from "../../services/userAuthApi";
 
 const CreateProductCategory = () => {
   const [createProduct, responseInfo] = useCreateProductCategoryMutation();
+  const [saveUserId, responseInfo2] = useSaveUserIdMutation();
+
   if (responseInfo.isLoading) return <div>is loading......</div>;
   if (responseInfo.isError)
     return <div>error occured {responseInfo.error.error} </div>;
@@ -16,6 +19,17 @@ const CreateProductCategory = () => {
         }}
       >
         crete post
+      </button>
+      <button
+        onClick={() => {
+          saveUserId({
+        "user": "nani@gmail.com",
+        "user_cart_id": 1,
+        "name": "romio"
+    });
+        }}
+      >
+        save userid
       </button>
     </div>
   );
