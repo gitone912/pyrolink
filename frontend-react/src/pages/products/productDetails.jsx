@@ -9,6 +9,9 @@ const ProductDetails = () => {
     if (responseInfo.isLoading) return <div>Loading......</div>;
     if (responseInfo.isError) return <div>Error occurred {responseInfo.error.error}</div>;
 
+    const addToCart = () => {
+        window.location.href = `/cart`;
+      };
     console.log(id)
     console.log(responseInfo.currentData)
       return (
@@ -141,7 +144,7 @@ const ProductDetails = () => {
                       <label htmlFor="quantity" className="sr-only">Qty</label>
                       <input type="number" id="quantity" min={1} defaultValue={1} className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
                     </div>
-                    <Button variant="gradient" className="rounded-full">
+                    <Button variant="gradient" className="rounded-full" onClick={addToCart}>
         Gradient
       </Button>
                   </div>

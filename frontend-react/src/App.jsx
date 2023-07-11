@@ -23,6 +23,7 @@ import ListProducts from './pages/products/productList.jsx';
 import { getToken } from './services/LocalStorageService.js';
 import Error404 from './pages/notFound404.jsx';
 import ProductDetails from './pages/products/productDetails.jsx';
+import Cart from './pages/cart/cart.jsx';
 function App() {
   
   const { access_token } = getToken();
@@ -56,6 +57,8 @@ function App() {
         
         <Route path="/products" element={<ListProducts />} />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        
       </Route>
       
      

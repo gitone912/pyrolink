@@ -1,135 +1,146 @@
-import React from "react";
-
-
-
-const NewComponent = () => {
-
+const Cart = () => {
       return (
-        <div>
-        <header className="mb-8">
-          <h3 className="text-xl font-medium text-gray-700">Checkout</h3>
-        </header>
-        <main>
-          <section className="checkout-form w-1/2">
-            <form action="#!" method="get">
-              <h6 className="font-medium">Contact information</h6>
-              <div className="form-control mt-4">
-                <label htmlFor="checkout-email" className="text-xs font-medium mb-1">E-mail</label>
-                <div className="relative">
-                  <span className="fa fa-envelope absolute top-1/2 left-0 transform -translate-y-1/2" />
-                  <input type="email" id="checkout-email" name="checkout-email" placeholder="Enter your email..." className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                </div>
-              </div>
-              <div className="form-control mt-4">
-                <label htmlFor="checkout-phone" className="text-xs font-medium mb-1">Phone</label>
-                <div className="relative">
-                  <span className="fa fa-phone absolute top-1/2 left-0 transform -translate-y-1/2" />
-                  <input type="tel" id="checkout-phone" name="checkout-phone" placeholder="Enter your phone..." className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                </div>
-              </div>
-              <br />
-              <h6 className="font-medium">Shipping address</h6>
-              <div className="form-control mt-4">
-                <label htmlFor="checkout-name" className="text-xs font-medium mb-1">Full name</label>
-                <div className="relative">
-                  <span className="fa fa-user-circle absolute top-1/2 left-0 transform -translate-y-1/2" />
-                  <input type="text" id="checkout-name" name="checkout-name" placeholder="Enter your name..." className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                </div>
-              </div>
-              <div className="form-control mt-4">
-                <label htmlFor="checkout-address" className="text-xs font-medium mb-1">Address</label>
-                <div className="relative">
-                  <span className="fa fa-home absolute top-1/2 left-0 transform -translate-y-1/2" />
-                  <input type="text" id="checkout-address" name="checkout-address" placeholder="Your address..." className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                </div>
-              </div>
-              <div className="form-control mt-4">
-                <label htmlFor="checkout-city" className="text-xs font-medium mb-1">City</label>
-                <div className="relative">
-                  <span className="fa fa-building absolute top-1/2 left-0 transform -translate-y-1/2" />
-                  <input type="text" id="checkout-city" name="checkout-city" placeholder="Your city..." className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                </div>
-              </div>
-              <div className="form-group mt-4">
-                <div className="form-control">
-                  <label htmlFor="checkout-country" className="text-xs font-medium mb-1">Country</label>
-                  <div className="relative">
-                    <span className="fa fa-globe absolute top-1/2 left-0 transform -translate-y-1/2" />
-                    <input type="text" id="checkout-country" name="checkout-country" placeholder="Your country..." list="country-list" className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                    <datalist id="country-list">
-                      <option value="India" />
-                      <option value="USA" />
-                      <option value="Russia" />
-                      <option value="Japan" />
-                      <option value="Egypt" />
-                    </datalist>
-                  </div>
-                </div>
-                <div className="form-control">
-                  <label htmlFor="checkout-postal" className="text-xs font-medium mb-1">Postal code</label>
-                  <div className="relative">
-                    <span className="fa fa-archive absolute top-1/2 left-0 transform -translate-y-1/2" />
-                    <input type="numeric" id="checkout-postal" name="checkout-postal" placeholder="Your postal code..." className="w-full px-10 py-2 border border-gray-300 rounded-lg outline-none text-xs font-semibold" />
-                  </div>
-                </div>
-              </div>
-              <div className="form-control checkbox-control mt-4">
-                <input type="checkbox" id="checkout-checkbox" name="checkout-checkbox" className="mr-2" />
-                <label htmlFor="checkout-checkbox" className="text-xs font-medium leading-4">Save this information for next time</label>
-              </div>
-              <div className="form-control-btn mt-6 flex justify-end">
-                <button className="px-4 py-2 text-xs font-medium text-white bg-orange-500 border-0 rounded-lg cursor-pointer">Continue</button>
-              </div>
-            </form>
-          </section>
-          <section className="checkout-details w-2/5">
-            <div className="checkout-details-inner bg-gray-200 rounded-lg p-4">
-              <div className="checkout-lists">
-                <div className="card flex items-center">
-                  <div className="card-image w-1/3">
-                    <img src="https://rvs-checkout-page.onrender.com/photo1.png" alt="" />
-                  </div>
-                  <div className="card-details flex flex-col">
-                    <div className="card-name text-xs font-medium">Vintage Backbag</div>
-                    <div className="card-price text-xs font-medium text-orange-500">$54.99 <span className="text-gray-700">$94.99</span></div>
-                    <div className="card-wheel mt-4 border border-gray-300 w-24 p-2 rounded-lg text-xs flex justify-between">
-                      <button className="bg-gray-300 text-gray-600 w-5 h-5 flex justify-center items-center border-0 rounded-md font-medium">-</button>
-                      <span>1</span>
-                      <button className="bg-gray-300 text-gray-600 w-5 h-5 flex justify-center items-center border-0 rounded-md font-medium">+</button>
+  <>
+        {/*
+    Heads up! 👋
+  
+    Plugins:
+      - @tailwindcss/forms
+  */}
+        <section>
+          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            <div className="mx-auto max-w-3xl">
+              <header className="text-center">
+                <h1 className="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
+              </header>
+              <div className="mt-8">
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80" alt="" className="h-16 w-16 rounded object-cover" />
+                    <div>
+                      <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+                      <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                        <div>
+                          <dt className="inline">Size:</dt>
+                          <dd className="inline">XXS</dd>
+                        </div>
+                        <div>
+                          <dt className="inline">Color:</dt>
+                          <dd className="inline">White</dd>
+                        </div>
+                      </dl>
+                    </div>
+                    <div className="flex flex-1 items-center justify-end gap-2">
+                      <form>
+                        <label htmlFor="Line1Qty" className="sr-only"> Quantity </label>
+                        <input type="number" min={1} defaultValue={1} id="Line1Qty" className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
+                      </form>
+                      <button className="text-gray-600 transition hover:text-red-600">
+                        <span className="sr-only">Remove item</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80" alt="" className="h-16 w-16 rounded object-cover" />
+                    <div>
+                      <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+                      <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                        <div>
+                          <dt className="inline">Size:</dt>
+                          <dd className="inline">XXS</dd>
+                        </div>
+                        <div>
+                          <dt className="inline">Color:</dt>
+                          <dd className="inline">White</dd>
+                        </div>
+                      </dl>
+                    </div>
+                    <div className="flex flex-1 items-center justify-end gap-2">
+                      <form>
+                        <label htmlFor="Line2Qty" className="sr-only"> Quantity </label>
+                        <input type="number" min={1} defaultValue={1} id="Line2Qty" className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
+                      </form>
+                      <button className="text-gray-600 transition hover:text-red-600">
+                        <span className="sr-only">Remove item</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-4">
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80" alt="" className="h-16 w-16 rounded object-cover" />
+                    <div>
+                      <h3 className="text-sm text-gray-900">Basic Tee 6-Pack</h3>
+                      <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                        <div>
+                          <dt className="inline">Size:</dt>
+                          <dd className="inline">XXS</dd>
+                        </div>
+                        <div>
+                          <dt className="inline">Color:</dt>
+                          <dd className="inline">White</dd>
+                        </div>
+                      </dl>
+                    </div>
+                    <div className="flex flex-1 items-center justify-end gap-2">
+                      <form>
+                        <label htmlFor="Line3Qty" className="sr-only"> Quantity </label>
+                        <input type="number" min={1} defaultValue={1} id="Line3Qty" className="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" />
+                      </form>
+                      <button className="text-gray-600 transition hover:text-red-600">
+                        <span className="sr-only">Remove item</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+                <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
+                  <div className="w-screen max-w-lg space-y-4">
+                    <dl className="space-y-0.5 text-sm text-gray-700">
+                      <div className="flex justify-between">
+                        <dt>Subtotal</dt>
+                        <dd>£250</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt>VAT</dt>
+                        <dd>£25</dd>
+                      </div>
+                      <div className="flex justify-between">
+                        <dt>Discount</dt>
+                        <dd>-£20</dd>
+                      </div>
+                      <div className="flex justify-between !text-base font-medium">
+                        <dt>Total</dt>
+                        <dd>£200</dd>
+                      </div>
+                    </dl>
+                    <div className="flex justify-end">
+                      <span className="inline-flex items-center justify-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-indigo-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="-ms-1 me-1.5 h-4 w-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                        </svg>
+                        <p className="whitespace-nowrap text-xs">2 Discounts Applied</p>
+                      </span>
+                    </div>
+                    <div className="flex justify-end">
+                      <a href="#" className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600">
+                        Checkout
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div className="card flex items-center">
-                  <div className="card-image w-1/3">
-                    <img src="https://rvs-checkout-page.onrender.com/photo2.png" alt="" />
-                  </div>
-                  <div className="card-details flex flex-col">
-                    <div className="card-name text-xs font-medium">Levi Shoes</div>
-                    <div className="card-price text-xs font-medium text-orange-500">$74.99 <span className="text-gray-700">$124.99</span></div>
-                    <div className="card-wheel mt-4 border border-gray-300 w-24 p-2 rounded-lg text-xs flex justify-between">
-                      <button className="bg-gray-300 text-gray-600 w-5 h-5 flex justify-center items-center border-0 rounded-md font-medium">-</button>
-                      <span>1</span>
-                      <button className="bg-gray-300 text-gray-600 w-5 h-5 flex justify-center items-center border-0 rounded-md font-medium">+</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="checkout-shipping flex justify-between mt-4">
-                <h6 className="text-xs font-medium">Shipping</h6>
-                <p className="text-xs font-medium">$19</p>
-              </div>
-              <div className="checkout-total flex justify-between mt-4">
-                <h6 className="text-xs font-medium">Total</h6>
-                <p className="text-xs font-medium">$148.98</p>
               </div>
             </div>
-          </section>
-        </main>
-        <footer className="mt-4">
-          <p className="text-xs text-gray-600">Created by - <a href="https://vetri-suriya.web.app/" className="text-orange-500">Vetri Suriya</a></p>
-        </footer>
-      </div>
+          </div>
+        </section>
+        </>
       );
-    };
+    }
 
-export default NewComponent;
+export default Cart;
