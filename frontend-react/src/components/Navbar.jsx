@@ -340,10 +340,10 @@ export default function Navbarx() {
         {access_token ? (
      <>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+          <Button variant="outlined" size="sm" color="blue-gray" fullWidth onClick={handleDashboardClick}>
            Dashboard
           </Button>
-          <Button variant="gradient" size="sm" fullWidth>
+          <Button variant="gradient" size="sm" fullWidth onClick={handleSignOutClick}>
             Sign Out
           </Button>
         </div>
@@ -351,10 +351,10 @@ export default function Navbarx() {
     ) : (
       <>
         <div className="flex w-full flex-nowrap items-center gap-2 lg:hidden">
-          <Button variant="outlined" size="sm" color="blue-gray" fullWidth>
+          <Button variant="outlined" size="sm" color="blue-gray" fullWidth onClick={handleSignInClick}>
            Sign In
           </Button>
-          <Button variant="gradient" size="sm" fullWidth>
+          <Button variant="gradient" size="sm" fullWidth onClick={handleSignUpClick }>
             Sign Up
           </Button>
         </div>

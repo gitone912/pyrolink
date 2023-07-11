@@ -1,17 +1,30 @@
 import { Button } from "@material-tailwind/react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetSingleProductQuery } from "../../services/productServiceApi";
+import { Alert } from "@material-tailwind/react";
+
+import { getToken } from '../../services/LocalStorageService.js';
+
 const ProductDetails = () => {
     const { id } = useParams()
     const responseInfo = useGetSingleProductQuery(id);
     const currentData = responseInfo.data;
+    const { access_token } = getToken();
+    
 
     if (responseInfo.isLoading) return <div>Loading......</div>;
     if (responseInfo.isError) return <div>Error occurred {responseInfo.error.error}</div>;
 
     const addToCart = () => {
+      if (access_token) {
+        // Add the product to the cart
         window.location.href = `/cart`;
-      };
+      } else {
+        // Show alert and redirect to sign-in
+        alert("Please log in to add the product to your cart.");
+        navigate("/signin");
+      }
+    };
     console.log(id)
     console.log(responseInfo.currentData)
       return (

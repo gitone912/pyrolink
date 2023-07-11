@@ -14,7 +14,7 @@ const SignOut = () => {
     dispatch(unsetUserInfo({ name: '', email: '' }));
     dispatch(unSetUserToken({ access_token: null }));
     removeToken();
-    navigate('/sign-in');
+    window.location.href = '/sign-in';
   };
 
   useEffect(() => {

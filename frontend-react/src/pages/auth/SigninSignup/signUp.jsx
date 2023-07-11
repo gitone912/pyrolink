@@ -4,11 +4,13 @@ import { useRegisterUserMutation } from "../../../services/userAuthApi";
 import { storeToken } from "../../../services/LocalStorageService";
 import { Alert } from "@material-tailwind/react";
 import { Checkbox, Typography } from "@material-tailwind/react";
+import { useCreateUserMutation } from "../../../services/cartServiceApi";
 
 const Signup = () => {
   const [server_error, setServerError] = useState({});
   const navigate = useNavigate();
   const [registerUser, { isLoading }] = useRegisterUserMutation();
+  const [createUser , responseInfo] = useCreateUserMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,15 +22,23 @@ const Signup = () => {
       confirmPassword: data.get("confirmPassword"),
       terms: data.get("terms"),
     };
+    console.log(actualData.name);
     const res = await registerUser(actualData);
     if (res.error) {
       setServerError(res.error.data.errors);
     }
     if (res.data) {
       storeToken(res.data.data.token);
+      createUser({
+        name: actualData.name,
+      });
       navigate("/dashboard");
     }
   };
+  if (responseInfo.isLoading) return <div>is loading......</div>;
+  if (responseInfo.isError)
+    return <div>error occured {responseInfo.error.error} </div>;
+  if (isLoading) return <div>is loading......</div>;
 
   return (
     <>

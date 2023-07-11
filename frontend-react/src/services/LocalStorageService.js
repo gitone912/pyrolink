@@ -17,5 +17,13 @@ const storeToken = (value) => {
     localStorage.removeItem('access_token')
     localStorage.removeItem('refresh_token')
   }
+
+  const storeId = (value) => {
+    if (value) {
+      console.log("Store Id")
+      const { id } = value
+      localStorage.setItem('id', id)
+    }
+  }
   
-  export { storeToken, getToken, removeToken }
+  export { storeToken, getToken, removeToken , storeId}
