@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useRegisterUserMutation } from "../../../services/userAuthApi";
-import { storeToken } from "../../../services/LocalStorageService";
+import { storeToken, storeId } from "../../../services/LocalStorageService";
 import { Alert } from "@material-tailwind/react";
 import { Checkbox, Typography } from "@material-tailwind/react";
 import { useCreateUserMutation } from "../../../services/cartServiceApi";
 import { useSaveUserIdMutation } from "../../../services/userAuthApi";
-import { storeId } from "../../../services/LocalStorageService";
 import { v4 as uuidv4 } from 'uuid';
 
 const Signup = () => {
-  const [userId, setUserId] = useState(Date.now());
   const [server_error, setServerError] = useState({});
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
+  const [createUser, responseInfo] = useCreateUserMutation();
   const [saveUserId, responseInfo2] = useSaveUserIdMutation();
   const navigate = useNavigate();
-  const [registerUser, { isLoading }] = useRegisterUserMutation();
-  const [createUser , responseInfo] = useCreateUserMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,38 +25,45 @@ const Signup = () => {
       confirmPassword: data.get("confirmPassword"),
       terms: data.get("terms"),
     };
-    
+
     console.log(actualData.name);
     const res = await registerUser(actualData);
+
     if (res.error) {
       setServerError(res.error.data.errors);
     }
-    if (res.data) {
-      storeToken(res.data.data.token);
-      createUser({
-        name: actualData.name,
-      });
-      saveUserId({
-        "user": actualData.email,
-        "user_cart_id": userId,
-        "name": actualData.name
-    });
-    storeId(userId);
-    console.log(userId,actualData.name,actualData.email);
-    
 
-      window.location.href = "/dashboard";
+    if (res.data) {
+      const response = await createUser({ name: actualData.name });
+      console.log(response);
+      const userId = response.data.id;
+      console.log(response);
+      
+      const res2 = await saveUserId({
+        user: actualData.email,
+        user_cart_id: userId,
+        name: actualData.name
+      });
+
+      storeToken(res.data.data.token);
+      storeId(userId);
+
+      console.log(userId, actualData.name, actualData.email);
+
+        window.location.href = "/dashboard";
+      
     }
   };
+
   if (responseInfo.isLoading) return <div>is loading......</div>;
   if (responseInfo.isError)
-    return <div>error occured {responseInfo.error.error} </div>;
+    return <div>error occurred {responseInfo.error.error}</div>;
   if (isLoading) return <div>is loading......</div>;
 
   return (
     <>
       {console.log(server_error)}
-      
+
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -79,7 +84,6 @@ const Signup = () => {
             onSubmit={handleSubmit}
           >
             <div>
-              
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Full Name
               </label>
@@ -99,7 +103,6 @@ const Signup = () => {
             </div>
 
             <div>
-            
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -118,15 +121,13 @@ const Signup = () => {
               </div>
               {server_error.email ? (
                 <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
-            {server_error.email[0]}
-            </Alert>
-          
-        ) : null}
+                  {server_error.email[0]}
+                </Alert>
+              ) : null}
             </div>
 
             <div>
               <div className="flex items-center justify-between">
-              
                 <label
                   htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -146,18 +147,18 @@ const Signup = () => {
               </div>
               {server_error.password ? (
                 <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
-            {server_error.password}
-            </Alert>
-        ) : null}
+                  {server_error.password}
+                </Alert>
+              ) : null}
             </div>
+
             <div>
               <div className="flex items-center justify-between">
-              
                 <label
                   htmlFor="password"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Password
+                  Confirm Password
                 </label>
               </div>
               <div className="mt-2">
@@ -171,20 +172,22 @@ const Signup = () => {
               </div>
               {server_error.confirmPassword ? (
                 <Alert className="bg-[#d0342c]/10 text-[#d0342c] border-l-4 border-[#d0342c] rounded-none font-small">
-            {server_error.confirmPassword[0]}
-            </Alert>
-        ) : null}
+                  {server_error.confirmPassword[0]}
+                </Alert>
+              ) : null}
             </div>
+
             {server_error.terms ? (
-            <span style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
-              {server_error.terms[0]}
-            </span>
-          ) : null}
+              <span style={{ fontSize: 12, color: 'red', paddingLeft: 10 }}>
+                {server_error.terms[0]}
+              </span>
+            ) : null}
+
             <Checkbox
-            name="terms"
-                    id="terms"
+              name="terms"
+              id="terms"
               label={
-                <Typography color="blue-gray" className="font-medium flex" >
+                <Typography color="blue-gray" className="font-medium flex">
                   I agree with the
                   <Typography
                     as="a"
@@ -192,7 +195,6 @@ const Signup = () => {
                     color="blue"
                     className="font-medium hover:text-blue-700 transition-colors"
                     required
-                    
                   >
                     &nbsp;terms and conditions
                   </Typography>
@@ -200,6 +202,7 @@ const Signup = () => {
                 </Typography>
               }
             />
+
             <div>
               <button
                 type="submit"

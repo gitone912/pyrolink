@@ -25,9 +25,9 @@ const storeToken = (value) => {
     }
   };
   const getId = () => {
-    let id = localStorage.getItem('id')
-    return { id }
-  }
+    let id = localStorage.getItem('id');
+    return id;
+  };
   const removeId = () => {
     localStorage.removeItem('id')
   }

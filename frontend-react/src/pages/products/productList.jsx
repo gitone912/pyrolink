@@ -186,11 +186,11 @@ const ListProducts = () => {
               .map((product) => (
                 <Card key={product.id} className="group">
                   <CardHeader color="blue-gray">
-                    <img
-                      src={product.image_link}
-                      alt={product.imageAlt}
-                      className="h-full w-full object-cover object-center group-hover:opacity-75"
-                    />
+                  <img
+      src={product.image_link}
+      alt={product.imageAlt}
+      className="h-40 w-60 object-cover object-center group-hover:opacity-75"
+    />
                     <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
                   </CardHeader>
                   <CardBody>

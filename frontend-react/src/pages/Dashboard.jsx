@@ -215,7 +215,7 @@ const Dashboard = () => {
         </div>
         <div className="relative h-full w-full">
           <img
-            src="https://source.unsplash.com/random/?python"
+            src="https://source.unsplash.com/random/?machinelearning"
             alt="image 1"
             className="h-full w-full object-cover"
           />
@@ -256,7 +256,7 @@ const Dashboard = () => {
                   <img
                     src={product.imageSrc}
                     alt={product.imageAlt}
-                    className="h-full w-full object-cover object-center group-hover:opacity-75"
+                    className="h-40 w-60 object-cover object-center group-hover:opacity-75"
                   />
                   <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
                 </CardHeader>
