@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   TextField,
@@ -13,6 +13,8 @@ import { getToken, storeToken } from "../../../services/LocalStorageService";
 import { useLoginUserMutation } from "../../../services/userAuthApi";
 import { Alert } from "@material-tailwind/react";
 
+import { storeId } from "../../../services/LocalStorageService";
+import { useGetUserIdMutation } from "../../../services/userAuthApi";
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +22,7 @@ const Signin = () => {
   const navigate = useNavigate();
   const [loginUser, { isLoading }] = useLoginUserMutation();
   const dispatch = useDispatch();
+  const [getUserId, { data: responseInfo, error }] = useGetUserIdMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +30,25 @@ const Signin = () => {
       email: email,
       password: password,
     };
+
+
+
+
+    const res3 = await getUserId({
+      email: actualData.email,
+    });
+    console.log(res3);
+    if (res3.error) {
+      console.log(res3.error);
+      setServerError(res3.error);
+    }
+    if (res3.data) {
+      storeId(res3.data.user_cart_id);
+      console.log(res3.data.user_cart_id);
+    }
+
+
+
     const res = await loginUser(actualData);
     if (res.error) {
       console.log(res.error.data.data);
@@ -34,15 +56,15 @@ const Signin = () => {
     }
     if (res.data) {
       storeToken(res.data.data.token);
+
       let { access_token } = getToken();
       dispatch(setUserToken({ access_token: access_token }));
-      window.location.href = '/dashboard';
+      window.location.href = "/dashboard";
     }
   };
 
   return (
     <>
-
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -66,7 +88,12 @@ const Signin = () => {
               {serverError.non_field_errors[0]}
             </Alert>
           )}
-          <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
             <div>
               <label
                 htmlFor="email"

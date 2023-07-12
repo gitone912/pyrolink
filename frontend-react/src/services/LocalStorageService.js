@@ -20,10 +20,18 @@ const storeToken = (value) => {
 
   const storeId = (value) => {
     if (value) {
-      console.log("Store Id")
-      const { id } = value
-      localStorage.setItem('id', id)
+      console.log("Store Id", value);
+      localStorage.setItem('id', value);
     }
+  };
+  const getId = () => {
+    let id = localStorage.getItem('id')
+    return { id }
   }
+  const removeId = () => {
+    localStorage.removeItem('id')
+  }
+
+
   
-  export { storeToken, getToken, removeToken , storeId}
+  export { storeToken, getToken, removeToken , storeId, getId , removeId}

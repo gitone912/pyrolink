@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeToken } from '../../../services/LocalStorageService';
 import React, { useState, useEffect } from 'react';
+import { removeId } from '../../../services/LocalStorageService';
 
 const SignOut = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const SignOut = () => {
     dispatch(unsetUserInfo({ name: '', email: '' }));
     dispatch(unSetUserToken({ access_token: null }));
     removeToken();
+    removeId();
     window.location.href = '/sign-in';
   };
 

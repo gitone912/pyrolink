@@ -5,9 +5,14 @@ import { storeToken } from "../../../services/LocalStorageService";
 import { Alert } from "@material-tailwind/react";
 import { Checkbox, Typography } from "@material-tailwind/react";
 import { useCreateUserMutation } from "../../../services/cartServiceApi";
+import { useSaveUserIdMutation } from "../../../services/userAuthApi";
+import { storeId } from "../../../services/LocalStorageService";
+import { v4 as uuidv4 } from 'uuid';
 
 const Signup = () => {
+  const [userId, setUserId] = useState(Date.now());
   const [server_error, setServerError] = useState({});
+  const [saveUserId, responseInfo2] = useSaveUserIdMutation();
   const navigate = useNavigate();
   const [registerUser, { isLoading }] = useRegisterUserMutation();
   const [createUser , responseInfo] = useCreateUserMutation();
@@ -22,6 +27,7 @@ const Signup = () => {
       confirmPassword: data.get("confirmPassword"),
       terms: data.get("terms"),
     };
+    
     console.log(actualData.name);
     const res = await registerUser(actualData);
     if (res.error) {
@@ -32,7 +38,16 @@ const Signup = () => {
       createUser({
         name: actualData.name,
       });
-      navigate("/dashboard");
+      saveUserId({
+        "user": actualData.email,
+        "user_cart_id": userId,
+        "name": actualData.name
+    });
+    storeId(userId);
+    console.log(userId,actualData.name,actualData.email);
+    
+
+      window.location.href = "/dashboard";
     }
   };
   if (responseInfo.isLoading) return <div>is loading......</div>;
